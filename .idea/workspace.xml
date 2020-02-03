@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeb4fe01-880a-4bca-ac37-d20d46cb3ddc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crm/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/crm/tests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -201,12 +201,12 @@
       <workItem from="1575806566106" duration="6455000" />
       <workItem from="1575813125042" duration="33366000" />
       <workItem from="1580668591337" duration="19652000" />
-      <workItem from="1580752483174" duration="621000" />
+      <workItem from="1580752483174" duration="833000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60655000" />
+    <option name="totallyTimeSpent" value="60867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="683" height="728" extended-state="0" />
