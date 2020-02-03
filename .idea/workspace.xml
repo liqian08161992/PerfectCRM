@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crm/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="154">
+              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -201,12 +201,12 @@
       <workItem from="1575806566106" duration="6455000" />
       <workItem from="1575813125042" duration="33366000" />
       <workItem from="1580668591337" duration="19652000" />
-      <workItem from="1580752483174" duration="833000" />
+      <workItem from="1580752483174" duration="1115000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60867000" />
+    <option name="totallyTimeSpent" value="61149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="683" height="728" extended-state="0" />
@@ -580,8 +580,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crm/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="154">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
         </state>
       </provider>
     </entry>
