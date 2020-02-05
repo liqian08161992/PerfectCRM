@@ -21,7 +21,7 @@ def build_table_row(request, obj,admin_class):
     for index,column in enumerate(admin_class.list_display):
         try:
             field_obj = obj._meta.get_field(column)
-            if field_obj.choices:#choices type
+            if field_obj.choices:#choices type，处理status这样的数字，展示为代表的汉字，
                 column_data = getattr(obj,"get_%s_display" % column)()
             else:
                 column_data = getattr(obj,column)
@@ -46,7 +46,7 @@ def build_table_row(request, obj,admin_class):
 
 
 @register.simple_tag
-def  build_paginators(query_sets,filter_condtions,previous_orderby,search_text):
+def build_paginators(query_sets,filter_condtions,previous_orderby,search_text):
     '''返回整个分页元素'''
     page_btns = ''
     filters = ''

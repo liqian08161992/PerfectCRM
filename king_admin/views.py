@@ -7,12 +7,11 @@ from king_admin import king_admin
 from king_admin.forms import create_model_form
 from django.contrib.auth.decorators import login_required
 
-# from crm.permissions import permission
+from crm.permissions import permission
 
 
 @login_required
 def index(request):
-    print(king_admin.enabled_admins)
     #print(king_admin.enabled_admins['crm']['customerfollowup'].model )
     return render(request, "king_admin/table_index.html",{'table_list':king_admin.enabled_admins})
 
@@ -22,11 +21,12 @@ def index(request):
 @login_required
 def display_table_objs(request,app_name,table_name):
 
-    print("-->",app_name,table_name)
+    print("-->",app_name,table_name)  # 这是通过url取到的，
     #models_module = importlib.import_module('%s.models'%(app_name))
     #model_obj = getattr(models_module,table_name)
     admin_class = king_admin.enabled_admins[app_name][table_name]
     #admin_class = king_admin.enabled_admins[crm][userprofile]
+
     if request.method == "POST": #action 来了
 
         print(request.POST)
@@ -44,15 +44,13 @@ def display_table_objs(request,app_name,table_name):
     #object_list = admin_class.model.objects.all()
     object_list,filter_condtions = table_filter(request,admin_class) #过滤后的结果
 
-    object_list = table_search(request,admin_class,object_list)
+    object_list = table_search(request,admin_class,object_list)  # 查询后的结果
 
     object_list,orderby_key = table_sort(request, admin_class, object_list) #排序后的结果
-
     print("orderby key ", orderby_key)
-    paginator = Paginator(object_list, admin_class.list_per_page) # Show 25 contacts per page
+    paginator = Paginator(object_list, admin_class.list_per_page)  # 分页
 
     page = request.GET.get('page')
-    print("page=",page)
     try:
         query_sets = paginator.page(page)
     except PageNotAnInteger:
@@ -67,8 +65,7 @@ def display_table_objs(request,app_name,table_name):
                                                         "filter_condtions":filter_condtions,
                                                         "orderby_key":orderby_key,
                                                         "previous_orderby": request.GET.get("o",''),
-                                                        "search_text":request.GET.get('_q','')
-                                                        })
+                                                        "search_text":request.GET.get('_q','')})
 
 @login_required
 def table_obj_delete(request,app_name,table_name,obj_id):
@@ -111,7 +108,7 @@ def table_obj_add(request,app_name,table_name):
 
 
 @login_required
-# @permission.check_permission
+@permission.check_permission
 def table_obj_change(request,app_name,table_name,obj_id):
 
     admin_class = king_admin.enabled_admins[app_name][table_name]

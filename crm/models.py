@@ -10,10 +10,12 @@ from django.utils.safestring import mark_safe
 
 class Customer(models.Model):
     '''客户信息表'''
-    # name = models.CharField(max_length=32,blank=True,null=True)
+    name = models.CharField(max_length=32,blank=True,null=True,help_text="用户报名后请改为真实姓名")
     qq = models.CharField(max_length=64,unique=True)
     qq_name = models.CharField(max_length=64,blank=True,null=True)
     phone = models.CharField(max_length=64,blank=True,null=True)
+    id_num = models.CharField(max_length=64,blank=True,null=True)
+    email = models.EmailField(verbose_name="常用邮箱",blank=True,null=True)
     source_choices = ((0,'转介绍'),
                       (1,'QQ群'),
                       (2,'官网'),
@@ -22,11 +24,13 @@ class Customer(models.Model):
                       (5,'知乎'),
                       (6,'市场推广')
                       )
+
     source = models.SmallIntegerField(choices=source_choices)
     referral_from = models.CharField(verbose_name="转介绍人qq",max_length=64,blank=True,null=True)
+
     consult_course = models.ForeignKey("Course",verbose_name="咨询课程")
     content = models.TextField(verbose_name="咨询详情")
-    tags = models.ManyToManyField("Tag",blank=True)
+    tags = models.ManyToManyField("Tag",blank=True,null=True)
     status_choices = ((0,'已报名'),
                       (1,'未报名'),
                       )
@@ -34,8 +38,10 @@ class Customer(models.Model):
     consultant = models.ForeignKey("UserProfile")
     memo = models.TextField(blank=True,null=True)
     date = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
-        return self.qq
+        return "<%s %s>" %(self.qq,self.name)
+
     class Meta:
         verbose_name ="客户表"
         verbose_name_plural ="客户表"

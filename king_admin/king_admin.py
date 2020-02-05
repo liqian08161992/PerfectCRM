@@ -45,12 +45,12 @@ class BaseAdmin(object):
         pass
 
 class CustomerAdmin(BaseAdmin):
-    list_display = ["id",'qq','qq_name','source','consultant','consult_course','date','status','enroll']
+    list_display = ["id",'qq','name','source','consultant','consult_course','date','status','enroll']
     list_filters = ['source','consultant','consult_course','status','date']
-    search_fields = ['qq','qq_name',"consultant__name"]
+    search_fields = ['qq','name',"consultant__name"]
     filter_horizontal = ('tags',)
     #model = models.Customer
-    list_per_page = 2
+    list_per_page = 5
     ordering = "qq"
     readonly_fields = ["qq","consultant","tags"]
     #readonly_table = True
@@ -144,20 +144,28 @@ class UserProfileAdmin(BaseAdmin):
     modelform_exclude_fields = ["last_login",]
     filter_horizontal = ("user_permissions","groups")
 
+
 def register(model_class,admin_class=None):
     if model_class._meta.app_label not in enabled_admins:
-        enabled_admins[model_class._meta.app_label] = {} #enabled_admins['crm'] = {}
-    #admin_obj = admin_class()
-    admin_class.model = model_class #绑定model 对象和admin 类
+        enabled_admins[model_class._meta.app_label] = {}  # enabled_admins['crm'] = {}
+    # admin_obj = admin_class()
+    admin_class.model = model_class  # 绑定model 对象和admin 类，加上这一句利于前端调用，admin_class为空的问题需要特殊处理，这里没有处理，
     enabled_admins[model_class._meta.app_label][model_class._meta.model_name] = admin_class
-    #enabled_admins['crm']['customerfollowup'] = CustomerFollowUpAdmin
+    # enabled_admins['crm']['customerfollowup'] = CustomerFollowUpAdmin
 
+
+class MenuAdmin(BaseAdmin):
+    # list_display = ('name')
+    pass
 
 register(models.Customer,CustomerAdmin)
 register(models.CustomerFollowUp,CustomerFollowUpAdmin)
 register(models.UserProfile,UserProfileAdmin)
 register(models.CourseRecord,CourseRecordAdmin)
 register(models.StudyRecord,StudyRecordAdmin)
+
+
+register(models.Menu,MenuAdmin)
 
 
 

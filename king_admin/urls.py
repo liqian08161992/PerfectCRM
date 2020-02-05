@@ -1,5 +1,5 @@
 
-from django.conf.urls import url
+from django.conf.urls import url,RegexURLPattern,RegexURLResolver
 from king_admin import views
 
 urlpatterns = [
